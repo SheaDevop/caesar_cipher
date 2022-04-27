@@ -10,15 +10,18 @@ def fibs(n)
         c = a
         n -= 1
     end
-    p result
     return result
 end
 
-fibs(0)
-fibs(1)
-fibs(2)
-fibs(3)
-fibs(4)
-fibs(5)
-fibs(6)
-fibs(14)
+def fibonacci(n)
+    return n if n < 2
+    return (fibonacci(n-1) + fibonacci(n-2))
+end
+
+def fibs_rec(n)
+    result = []
+    for i in 0..n
+        result << fibonacci(i)
+    end
+    return result
+end
