@@ -26,7 +26,7 @@ module MasterMind
     def give_feedback
       @black_pins = 0    #number of correct colors in correct place
       @white_pins = 0    #just correct color in wrong place
-      @code_maker.code.each_index |index| do
+      @code_maker.code.each_index do |index|
         if @code_maker.code[index] == @code_breaker.code[index]
           @black_pins += 1
         elsif @code_maker.code.any? {|color| color == @code_breaker.code[index]}
@@ -49,7 +49,30 @@ module MasterMind
   end
 
   class Human < Player
-    def 
+    def selects_code
+      puts "Select a 4 color combination code from #{COLORS} options"
+      4.times do 
+        @code.push(gets.chomp)
+      end
+    end
+
+    def try_to_guess
+      puts "try to guess the 4 colors code, possible colors are: #{COLORS}"
+      4.times do 
+        @code.push(gets.chomp)
+      end
+    end
+  end
+
+  class Computer < Player
+    def selects_code
+      4.times do
+        @code.push(COLORS.sample)
+      end
+    end
+
+    def try_to_guess
+
 
 
 
